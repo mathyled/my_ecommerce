@@ -5,7 +5,7 @@ import "../styles/product.css"
 const ProductCard = ({ product }) => {
     return (
         <div className="product-card">
-             <Link to={`/products${product.id}`}>
+             <Link to={`/products/${product.id}`}>
               <img src={product.image} alt={product.title} /></Link>
             <h2>{product.title}</h2>
             {/* <p>{product.description}</p> */}
