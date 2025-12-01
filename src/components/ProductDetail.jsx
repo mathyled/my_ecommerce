@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import styles from "../styles/ProductDetail.module.css";
+import styles from "../styles/productDetail.module.css";
 import { CarritoContext } from "../context/CarritoContext";
 
 const ProductDetail = () => {
