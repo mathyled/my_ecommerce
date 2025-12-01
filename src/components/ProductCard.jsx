@@ -4,33 +4,31 @@ import { useContext } from "react";
 import { CarritoContext } from "../context/CarritoContext";
 import { AuthContext } from "../context/AuthContext";
 
-
-
 const ProductCard = ({ product, onProductDeleted }) => {
   const { user } = useContext(AuthContext);
 
-  const isAdmin = user=== "admin";
+  const isAdmin = user === "admin";
   
   const { agregarAlCarrito } = useContext(CarritoContext);
   const navigate = useNavigate();
 
   const deleteProduct = async (id) => {
-    const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar este producto?");
+    const confirmDelete = window.confirm("Are you sure you want to delete this product?");
     if (!confirmDelete) return;
 
     try {
       const res = await fetch(`https://692622f226e7e41498f98317.mockapi.io/products/${id}`, {
         method: "DELETE",
       });
-      if (!res.ok) throw new Error("Error al eliminar el producto.");
+      if (!res.ok) throw new Error("Error deleting the product.");
 
       // Llamar callback para actualizar lista
       if (typeof onProductDeleted === 'function') {
         onProductDeleted(id);
       }
-      alert("Producto eliminado correctamente.");
+      alert("Product deleted successfully.");
     } catch (err) {
-      alert(err.message || "Error desconocido al eliminar el producto.");
+      alert(err.message || "Unknown error deleting the product.");
     }
   };
 
@@ -40,9 +38,9 @@ const ProductCard = ({ product, onProductDeleted }) => {
         <img src={product.imageUrl} alt={product.name} />
       </Link>
       <h2 className={styles.productName}>{product.name}</h2>
-      <p className={styles.productPrice}>Precio: ${product.price}</p>
+      <p className={styles.productPrice}>Price: ${product.price}</p>
       <button className={styles.buyBtn} onClick={() => agregarAlCarrito(product)}>
-        Comprar
+        Buy
       </button>
 
       {isAdmin && (
@@ -55,13 +53,13 @@ const ProductCard = ({ product, onProductDeleted }) => {
               })
             }
           >
-            Editar
+            Edit
           </button>
           <button
             className={styles.deleteBtn}
             onClick={() => deleteProduct(product.id)}
           >
-            Eliminar
+            Delete
           </button>
         </div>
       )}

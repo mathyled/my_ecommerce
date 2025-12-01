@@ -1,4 +1,3 @@
-// ...existing code...
 import { useState } from "react";
 import styles from "../styles/productForm.module.css";
 
@@ -16,21 +15,21 @@ const ProductForm = () => {
   const [success, setSuccess] = useState(null);
 
   const validate = (p) => {
-    const nuevosErrores = {};
-    if (!p.name.trim()) nuevosErrores.name = "El nombre es obligatorio.";
+    const newErrors = {};
+    if (!p.name.trim()) newErrors.name = "Name is required.";
     if (!p.description.trim() || p.description.trim().length < 10)
-      nuevosErrores.description = "La descripción debe tener al menos 10 caracteres.";
+      newErrors.description = "Description must be at least 10 characters.";
     if (p.price === "" || Number.isNaN(Number(p.price)) || Number(p.price) <= 0)
-      nuevosErrores.price = "El precio debe ser un número mayor a 0.";
+      newErrors.price = "Price must be a number greater than 0.";
     if (p.imageUrl && p.imageUrl.trim()) {
       try {
         const u = new URL(p.imageUrl);
-        if (!/^https?:/.test(u.protocol)) nuevosErrores.imageUrl = "La URL debe usar http(s).";
+        if (!/^https?:/.test(u.protocol)) newErrors.imageUrl = "URL must use http(s).";
       } catch {
-        nuevosErrores.imageUrl = "La URL no es válida.";
+        newErrors.imageUrl = "Invalid URL.";
       }
     }
-    return nuevosErrores;
+    return newErrors;
   };
 
   const handleChange = (e) => {
@@ -49,14 +48,14 @@ const ProductForm = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       });
-      if (!res.ok) throw new Error("Error al agregar el producto.");
+      if (!res.ok) throw new Error("Error adding product.");
       const data = await res.json();
-      setSuccess("Producto agregado correctamente.");
+      setSuccess("Product added successfully.");
       setProduct(initialState);
       setErrors({});
       return data;
     } catch (err) {
-      setErrors((prev) => ({ ...prev, submit: err.message || "Error desconocido." }));
+      setErrors((prev) => ({ ...prev, submit: err.message || "Unknown error." }));
       throw err;
     } finally {
       setSubmitting(false);
@@ -66,9 +65,9 @@ const ProductForm = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const nuevosErrores = validate(product);
-    setErrors(nuevosErrores);
-    if (Object.keys(nuevosErrores).length > 0) return;
+    const newErrors = validate(product);
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) return;
     try {
       await onSubmit(product);
     } catch {
@@ -79,34 +78,34 @@ const ProductForm = () => {
   return (
     <div className={styles.container}>
     <form  onSubmit={handleOnSubmit} noValidate>
-      <h2 className={styles.title}>Agregar producto</h2>
+      <h2 className={styles.title}>Add Product</h2>
 
       <div className={styles.formGroup}>
-        <label className={styles.label}>Nombre</label>
+        <label className={styles.label}>Name</label>
         <input
           name="name"
           value={product.name}
           onChange={handleChange}
           className={`${styles.input} ${errors.name ? styles.invalid : ""}`}
-          placeholder="Nombre del producto"
+          placeholder="Product name"
           />
         {errors.name && <div className={styles.feedback}>{errors.name}</div>}
       </div>
 
       <div className={styles.formGroup}>
-        <label className={styles.label}>Descripción</label>
+        <label className={styles.label}>Description</label>
         <textarea
           name="description"
           value={product.description}
           onChange={handleChange}
           className={`${styles.textarea} ${errors.description ? styles.invalid : ""}`}
-          placeholder="Descripción del producto"
+          placeholder="Product description"
         />
         {errors.description && <div className={styles.feedback}>{errors.description}</div>}
       </div>
 
       <div className={styles.formGroup}>
-        <label className={styles.label}>Precio</label>
+        <label className={styles.label}>Price</label>
         <input
           name="price"
           type="number"
@@ -133,7 +132,7 @@ const ProductForm = () => {
 
       <div className={styles.actions}>
         <button className={`${styles.btn} ${styles.btnPrimary}`} type="submit" disabled={submitting}>
-          {submitting ? "Enviando..." : "Agregar producto"}
+          {submitting ? "Submitting..." : "Add Product"}
         </button>
       </div>
 

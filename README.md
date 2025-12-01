@@ -1,16 +1,58 @@
-# React + Vite
+# Mi E-commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación de Tienda Virtual construida con React y Vite.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** - Librería de interfaz de usuario
+- **Vite** - Herramienta de construcción y desarrollo rápido
+- **JavaScript/JSX** - Lenguaje de programación
+- **ESLint** - Linting de código
+- **Babel/SWC** - Compilador JavaScript para Fast Refresh
 
-## React Compiler
+## 📦 Instalación
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Requisitos Previos
+- Node.js (versión 14 o superior)
+- npm o yarn
 
-## Expanding the ESLint configuration
+### Pasos de Instalación
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clonar el repositorio**
+```bash
+git clone <url-del-repositorio>
+cd my_ecommerce
+```
+
+2. **Instalar dependencias**
+```bash
+npm install
+```
+
+3. **Ejecutar el servidor de desarrollo**
+```bash
+npm run dev
+```
+
+4. **Construir para producción**
+```bash
+npm run build
+```
+
+## 🔐 Acceso a la Aplicación
+
+### Usuario Cliente
+- **Email:** user
+- **Contraseña:** 1234
+
+### Usuario Administrador
+- **Email:** admin
+- **Contraseña:** 1234
+
+> ⚠️ Estas son credenciales de prueba. Cambia las contraseñas en producción.
+
+## 📝 Notas Adicionales
+
+El React Compiler no está habilitado en esta plantilla por su impacto en el rendimiento. Para habilitarlo, consulta la [documentación oficial](https://react.dev/learn/react-compiler/installation).
+
+Para un proyecto en producción con TypeScript, considera usar el template `template-react-ts` con reglas de linting type-aware.

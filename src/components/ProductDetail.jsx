@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
-
+import styles from "../styles/ProductDetail.module.css";
+import { CarritoContext } from "../context/CarritoContext";
 
 const ProductDetail = () => {
     const {id} = useParams();
     const [product, setProduct] = useState(null);
+      const { agregarAlCarrito } = useContext(CarritoContext);
+    
 
     useEffect(() => {
         // Fetch product details based on the id
@@ -13,17 +16,26 @@ const ProductDetail = () => {
             .then(data => setProduct(data));
     }, [id]);
 
-    // console.log("id",typeof id);
+    if (!product) return <div className={styles.loading}>Cargando...</div>;
     
-     if (!product) return <div>Loading...</div>;
     return (
-        <div>
-            <h1>Product Detail Page</h1>
-            <p>Displaying details for product ID: {id}</p>
-            <h2>{product.name}</h2>
-            <img src={product.imageUrl} alt={product.name} />
-            <p>{product.description}</p>
-            <p>Price: ${product.price}</p>
+        <div className={styles.productDetailContainer}>
+            <div className={styles.productDetail}>
+                <h1 className={styles.pageTitle}>Producto Details</h1>
+                
+                <div className={styles.productContent}>
+                    <div className={styles.productImage}>
+                        <img src={product.imageUrl} alt={product.name} />
+                    </div>
+                    
+                    <div className={styles.productInfo}>
+                        <h2 className={styles.productName}>{product.name}</h2>
+                        <p className={styles.productDescription}>{product.description}</p>
+                        <p className={styles.productPrice}>${product.price}</p>
+                        <button className={styles.addToCartBtn} onClick={() => agregarAlCarrito(product)}>Add to Cart</button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

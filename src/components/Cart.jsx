@@ -3,28 +3,32 @@ import { CarritoContext } from '../context/CarritoContext.js'
 import styles from "../styles/cart.module.css"
 import { AuthContext } from "../context/AuthContext.js";
 import { Navigate } from "react-router";
+
 const Cart = () => {
     const { user } = useContext(AuthContext) || {};
     const { carrito, vaciarCarrito, incrementar, decrementar, eliminarProducto, totalItems } = useContext(CarritoContext);
 
-    // redirigir si no está autenticado
+    // Redirect if not authenticated
     if (!user) return <Navigate to="/login" replace />;
-      const subtotal = carrito.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-        const handlePago = () => {
-        const confirmPago = window.confirm("¿Deseas proceder al pago?");
+    
+    const subtotal = carrito.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    
+    const handlePago = () => {
+        const confirmPago = window.confirm("Do you want to proceed to payment?");
         if (confirmPago) {
-            alert("Procesando pago...");
+            alert("Processing payment...");
             vaciarCarrito()
-            // Aquí iría la lógica de pago
+            // Payment logic would go here
         } else {
-            alert("Pago cancelado");
+            alert("Payment cancelled");
         }
     }
+
     return (
         <div className={styles.container}>
             <header className={styles.header}>
-                <h1 className={styles.title}>Tu carrito</h1>
-                <div className={styles.user}>Usuario: <strong>{user}</strong></div>
+                <h1 className={styles.title}>Your Cart</h1>
+                <div className={styles.user}>User: <strong>{user}</strong></div>
             </header>
 
             {carrito.length === 0 ? (
@@ -43,7 +47,7 @@ const Cart = () => {
                             </div>
 
                             <div className={styles.actions}>
-                                <label className={styles.qtyLabel}>Cantidad:</label>
+                                <label className={styles.qtyLabel}>Quantity:</label>
                                 <div style={{display: 'flex', gap: '0.5rem', alignItems: 'center'}}>
                                     <button className={styles.btn} onClick={() => decrementar(item.id)}>-</button>
                                     <span>{item.quantity}</span>
@@ -55,18 +59,20 @@ const Cart = () => {
                     ))}
                 </ul>
             )}
-          <span className={styles.totalItems}>Total items: {totalItems}</span>
+            
+            <span className={styles.totalItems}>Total items: {totalItems}</span>
             <span className={styles.subtotal}>Subtotal: ${subtotal.toFixed(2)}</span>
 
             {carrito.length > 0 && (
                 <div className={styles.footer}>
                     <button className={`${styles.btn} ${styles.clear}`} onClick={vaciarCarrito}>Empty Cart</button>
                     <button className={`${styles.btn} ${styles.checkout}`} onClick={handlePago}>
-                        Pagar
+                        Purchase
                     </button>
                 </div>
             )}
         </div>
     )
 }
+
 export default Cart;

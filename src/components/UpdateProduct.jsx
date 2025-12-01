@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styles from "../styles/updateProduct.module.css";
 
-
-
-
 const UpdateProduct = () => {
   const { state } = useLocation();
   const params = useParams();
@@ -33,7 +30,7 @@ const UpdateProduct = () => {
           const res = await fetch(
             `https://692622f226e7e41498f98317.mockapi.io/products/${params.id}`
           );
-          if (!res.ok) throw new Error(`Producto no encontrado (${res.status})`);
+          if (!res.ok) throw new Error(`Product not found (${res.status})`);
           const data = await res.json();
           setProduct({
             id: data.id,
@@ -60,11 +57,11 @@ const UpdateProduct = () => {
 
   const validate = (p) => {
     const errs = {};
-    if (!p.name || p.name.trim().length < 3) errs.name = "Nombre mínimo 3 caracteres";
+    if (!p.name || p.name.trim().length < 3) errs.name = "Name must be at least 3 characters";
     if (!p.description || p.description.trim().length < 10)
-      errs.description = "Descripción mínima 10 caracteres";
+      errs.description = "Description must be at least 10 characters";
     if (p.price === "" || Number.isNaN(Number(p.price)) || Number(p.price) <= 0)
-      errs.price = "Precio debe ser número mayor a 0";
+      errs.price = "Price must be a number greater than 0";
     return errs;
   };
 
@@ -90,12 +87,12 @@ const UpdateProduct = () => {
       );
       if (!res.ok) {
         const txt = await res.text().catch(() => "");
-        throw new Error(`Error al actualizar (${res.status}) ${txt}`);
+        throw new Error(`Error updating product (${res.status}) ${txt}`);
       }
       await res.json();
       navigate(-1);
     } catch (err) {
-      setError(err.message || "Error al actualizar producto");
+      setError(err.message || "Error updating product");
     } finally {
       setSubmitting(false);
     }
@@ -105,7 +102,7 @@ const UpdateProduct = () => {
     return (
       <div className={styles.productPage}>
         <div className={styles.productContent}>
-          <div className={styles.productCard}>Cargando producto...</div>
+          <div className={styles.productCard}>Loading product...</div>
         </div>
       </div>
     );
@@ -123,23 +120,23 @@ const UpdateProduct = () => {
     <div className={styles.productPage}>
       <div className={styles.productContent}>
         <div className={styles.productCard}>
-          <h2 className={styles.productTitle}>Editar producto</h2>
+          <h2 className={styles.productTitle}>Edit Product</h2>
 
           <form className={styles.productForm} onSubmit={handleSubmit} noValidate>
             <div className={styles.productFormGroup}>
-              <label className={styles.productLabel}>Nombre</label>
+              <label className={styles.productLabel}>Name</label>
               <input
                 className={`${styles.productInput} ${fieldErrors.name ? styles.invalid : ""}`}
                 name="name"
                 value={product.name}
                 onChange={handleChange}
-                placeholder="Nombre del producto"
+                placeholder="Product name"
               />
               {fieldErrors.name && <div className={styles.productFeedback}>{fieldErrors.name}</div>}
             </div>
 
             <div className={styles.productFormGroup}>
-              <label className={styles.productLabel}>Precio</label>
+              <label className={styles.productLabel}>Price</label>
               <input
                 className={`${styles.productInput} ${fieldErrors.price ? styles.invalid : ""}`}
                 name="price"
@@ -153,13 +150,13 @@ const UpdateProduct = () => {
             </div>
 
             <div className={styles.productFormGroup}>
-              <label className={styles.productLabel}>Descripción</label>
+              <label className={styles.productLabel}>Description</label>
               <textarea
                 className={`${styles.productInput} ${fieldErrors.description ? styles.invalid : ""}`}
                 name="description"
                 value={product.description}
                 onChange={handleChange}
-                placeholder="Descripción del producto"
+                placeholder="Product description"
               />
               {fieldErrors.description && (
                 <div className={styles.productFeedback}>{fieldErrors.description}</div>
@@ -183,7 +180,7 @@ const UpdateProduct = () => {
                 type="submit"
                 disabled={submitting}
               >
-                {submitting ? "Guardando..." : "Actualizar producto"}
+                {submitting ? "Saving..." : "Update Product"}
               </button>
               <button
                 className={styles.productBtn}
@@ -191,7 +188,7 @@ const UpdateProduct = () => {
                 onClick={() => navigate(-1)}
                 disabled={submitting}
               >
-                Cancelar
+                Cancel
               </button>
             </div>
 
