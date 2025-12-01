@@ -13,7 +13,8 @@ import { CarritoProvider } from './context/CarritoProvider.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
 import Dashboard from './components/Dashboard.jsx'
 import ProductForm from './components/ProductForm.jsx'
-import UpdateProduct from './components/updateProduct.jsx'
+
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -29,7 +30,7 @@ createRoot(document.getElementById('root')).render(
               <Route path="/products/:id" element={<ProductDetail />} />
               <Route path="/dashboard" element={< RuteProtected isAuthenticated={true}> <Dashboard /></RuteProtected>} />
               <Route path="/dashboard/add" element={< RuteProtected isAuthenticated={true}> <ProductForm /></RuteProtected>} />
-              <Route path="/dashboard/edit" element={< RuteProtected isAuthenticated={true}> < UpdateProduct/></RuteProtected>} />
+              {/* <Route path="/dashboard/edit" element={< RuteProtected isAuthenticated={true}> < UpdateProduct/></RuteProtected>} /> */}
               <Route path="*" element={<h2>404 Not Found</h2>} />
             </Route>
           </Routes>

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styles from "../styles/updateProduct.module.css";
 
+
+
+
 const UpdateProduct = () => {
   const { state } = useLocation();
   const params = useParams();
