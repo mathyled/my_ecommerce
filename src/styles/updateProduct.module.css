@@ -1,0 +1,235 @@
+.productPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  padding: 2rem;
+  background: transparent;
+}
+
+.productContent {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.productCard {
+  background: #ffffff;
+  padding: 1.75rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(12, 16, 24, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.03);
+}
+
+.productTitle {
+  margin: 0 0 1rem;
+  color: #111827;
+  font-size: 1.25rem;
+}
+
+.productForm {
+  display: block;
+}
+
+.productFormGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.9rem;
+}
+
+.productLabel {
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.productInput {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #e6e9ef;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #111827;
+  background: #fff;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  resize: vertical;
+}
+
+.productInput:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08);
+}
+
+.productActions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+  align-items: center;
+}
+
+.productBtn {
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.productBtnPrimary {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+}
+
+.productBtnPrimary:hover {
+  background: #1e40af;
+}
+
+.invalid {
+  border-color: #dc3545;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.04);
+}
+
+.productFeedback {
+  margin-top: 0.4rem;
+  color: #dc3545;
+  font-size: 0.9rem;
+}
+
+.productFeedbackGlobal {
+  margin-top: 0.9rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  background: #fff5f5;
+  color: #9b1c1c;
+  border: 1px solid rgba(220, 53, 69, 0.12);
+}
+
+/* responsive */
+@media (max-width: 600px) {
+  .productContent {
+    padding: 0 1rem;
+  }
+  .productCard {
+    padding: 1rem;
+  }
+}
+
+.productPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  padding: 2rem;
+  background: transparent;
+}
+
+.productContent {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.productCard {
+  background: #ffffff;
+  padding: 1.75rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(12, 16, 24, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.03);
+}
+
+.productTitle {
+  margin: 0 0 1rem;
+  color: #111827;
+  font-size: 1.25rem;
+}
+
+.productForm {
+  display: block;
+}
+
+.productFormGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.9rem;
+}
+
+.productLabel {
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.productInput {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #e6e9ef;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #111827;
+  background: #fff;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  resize: vertical;
+}
+
+.productInput:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08);
+}
+
+.productActions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+  align-items: center;
+}
+
+.productBtn {
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.productBtnPrimary {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+}
+
+.productBtnPrimary:hover {
+  background: #1e40af;
+}
+
+.invalid {
+  border-color: #dc3545;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.04);
+}
+
+.productFeedback {
+  margin-top: 0.4rem;
+  color: #dc3545;
+  font-size: 0.9rem;
+}
+
+.productFeedbackGlobal {
+  margin-top: 0.9rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  background: #fff5f5;
+  color: #9b1c1c;
+  border: 1px solid rgba(220, 53, 69, 0.12);
+}
+
+/* responsive */
+@media (max-width: 600px) {
+  .productContent {
+    padding: 0 1rem;
+  }
+  .productCard {
+    padding: 1rem;
+  }
+}

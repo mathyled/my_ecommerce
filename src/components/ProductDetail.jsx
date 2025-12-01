@@ -8,7 +8,7 @@ const ProductDetail = () => {
 
     useEffect(() => {
         // Fetch product details based on the id
-        fetch(`https://fakestoreapi.com/products/${id}`)
+        fetch(`https://692622f226e7e41498f98317.mockapi.io/products/${id}`)
             .then(response => response.json())
             .then(data => setProduct(data));
     }, [id]);
@@ -20,8 +20,8 @@ const ProductDetail = () => {
         <div>
             <h1>Product Detail Page</h1>
             <p>Displaying details for product ID: {id}</p>
-            <h2>{product.title}</h2>
-            <img src={product.image} alt={product.title} />
+            <h2>{product.name}</h2>
+            <img src={product.imageUrl} alt={product.name} />
             <p>{product.description}</p>
             <p>Price: ${product.price}</p>
         </div>

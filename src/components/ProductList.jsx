@@ -1,12 +1,12 @@
 import ProductCard from "./ProductCard"
 
 
-const ProductList = ({products}) => {
-    
+const ProductList = ({products, handleDeleteProduct}) => {
+      
     return (
         <div className="product-list" >{/* Render the list of products here */}
         {products.map(p => (
-          <ProductCard product={p} key={p.id} />
+          <ProductCard product={p} key={p.id}  onProductDeleted={handleDeleteProduct}/>
         ))}
      
   
