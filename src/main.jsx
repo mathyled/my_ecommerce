@@ -15,6 +15,7 @@ import Dashboard from './components/Dashboard.jsx'
 import ProductForm from './components/ProductForm.jsx'
 import UpdateProduct from './components/updateProduct.jsx'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
